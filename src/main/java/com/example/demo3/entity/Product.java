@@ -3,7 +3,7 @@ package com.example.demo3.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-@Entity(name = "products")
+@Entity
 public class Product {
 
     @Id

@@ -16,10 +16,10 @@ public class Main {
 
         EntityManager em = emf.createEntityManager();
 
-        //TypedQuery<Product> query = em.createQuery("select p from Product p", Product.class);
-        //List<Product> list = query.getResultList();
-        //list.forEach(System.out::println);
+        TypedQuery<Product> query = em.createQuery("select p from Product p", Product.class);
+        List<Product> list = query.getResultList();
+        list.forEach(System.out::println);
 
-        em.createNativeQuery("select * from products", Product.class).getResultList().forEach(System.out::println);
+        //em.createNativeQuery("select * from products", Product.class).getResultList().forEach(System.out::println);
     }
 }
