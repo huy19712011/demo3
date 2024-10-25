@@ -16,7 +16,8 @@ public class HibernateUtil {
             try {
                 Configuration configuration = new Configuration();
 
-                Properties settings = JpaUtil.getProperties();
+                //Properties settings = JpaUtil.getProperties();
+                Properties settings = JpaUtil.getProperties("test1", "sa", "123456");
 
                 configuration.setProperties(settings);
 

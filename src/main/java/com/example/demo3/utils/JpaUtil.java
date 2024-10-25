@@ -18,7 +18,8 @@ public class JpaUtil {
             try {
                 Configuration configuration = new Configuration();
 
-                Properties settings = getProperties();
+                //Properties settings = getProperties();
+                Properties settings = getProperties("test1", "sa", "123456");
 
                 configuration.setProperties(settings);
 
@@ -39,13 +40,16 @@ public class JpaUtil {
         return entityManagerFactory;
     }
 
-    public static Properties getProperties() {
+    public static Properties getProperties(String databaseName, String username, String password) {
         // JPA settings equivalent to persistence.xml
         Properties settings = new Properties();
         settings.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        settings.put(Environment.URL, "jdbc:sqlserver://localhost;database=test1;encrypt=true;trustServerCertificate=true;");
-        settings.put(Environment.USER, "sa");
-        settings.put(Environment.PASS, "123456");
+        //settings.put(Environment.URL, "jdbc:sqlserver://localhost;database=test1;encrypt=true;trustServerCertificate=true;");
+        settings.put(Environment.URL, "jdbc:sqlserver://localhost;database=" + databaseName + ";encrypt=true;trustServerCertificate=true;");
+        //settings.put(Environment.USER, "sa");
+        settings.put(Environment.USER, username);
+        //settings.put(Environment.PASS, "123456");
+        settings.put(Environment.PASS, password);
         //settings.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect"); // not need, auto-detect here
 
         settings.put(Environment.SHOW_SQL, "true");

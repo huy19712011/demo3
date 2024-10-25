@@ -33,10 +33,6 @@ public class Main {
         em.persist(product2);
         em.getTransaction().commit();
 
-
-        //em.persist(new Product(1, "product 1"));
-        //em.persist(new Product(2, "product 2"));
-
         TypedQuery<Product> query = em.createQuery("select p from Product p", Product.class);
         List<Product> list = query.getResultList();
         list.forEach(System.out::println);
