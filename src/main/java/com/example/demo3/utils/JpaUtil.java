@@ -52,6 +52,17 @@ public class JpaUtil {
 
         settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
+        // Change options here: create-drop, create, update, validate
+        /*
+            https://stackoverflow.com/questions/438146/what-are-the-possible-values-of-the-hibernate-hbm2ddl-auto-configuration-and-wha
+            none - No action is performed. The schema will not be generated.
+            create-only - The database schema will be generated.
+            drop - The database schema will be dropped.
+            create - The database schema will be dropped and created afterward.
+            create-drop - The database schema will be dropped and created afterward. Upon closing the SessionFactory, the database schema will be dropped.
+            validate - The database schema will be validated using the entity mappings.
+            update - The database schema will be updated by comparing the existing database schema with the entity mappings.
+        */
         settings.put(Environment.HBM2DDL_AUTO, "create-drop");
 
         return settings;
