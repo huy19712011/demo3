@@ -16,29 +16,18 @@ public class HibernateUtil {
             try {
                 Configuration configuration = new Configuration();
 
-                // Hibernate settings equivalent to hibernate.cfg.xml's properties
-                Properties settings = new Properties();
-                settings.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                settings.put(Environment.URL, "jdbc:sqlserver://localhost;database=test1;encrypt=true;trustServerCertificate=true;");
-                settings.put(Environment.USER, "sa");
-                settings.put(Environment.PASS, "123456");
-//                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
-
-                settings.put(Environment.SHOW_SQL, "true");
-
-                settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-
-//                settings.put(Environment.HBM2DDL_AUTO, "create-drop");
-                settings.put(Environment.HBM2DDL_AUTO, "update");
+                Properties settings = JpaUtil.getProperties();
 
                 configuration.setProperties(settings);
 
+                // Register classes here to use
                 configuration.addAnnotatedClass(Student.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
 
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

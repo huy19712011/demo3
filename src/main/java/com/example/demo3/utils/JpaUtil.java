@@ -39,7 +39,7 @@ public class JpaUtil {
         return entityManagerFactory;
     }
 
-    private static Properties getProperties() {
+    public static Properties getProperties() {
         // JPA settings equivalent to persistence.xml
         Properties settings = new Properties();
         settings.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
