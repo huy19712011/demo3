@@ -15,6 +15,11 @@ public class Product {
     public Product() {
     }
 
+    public Product(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public long getId() {
         return id;
     }
