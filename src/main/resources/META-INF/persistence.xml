@@ -19,9 +19,14 @@
             <!--            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>-->
             <property name="hibernate.show_sql" value="true"/>
 
+<!--
+            https://thorben-janssen.com/generate-database-schema-jpa/
+-->
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
-            <property name="jakarta.persistence.schema-generation.scripts.action" value="create"/>
-            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="META-INF/create.sql"/>
+<!--            <property name="jakarta.persistence.schema-generation.scripts.action" value="drop-and-create"/>-->
+<!--            <property name="jakarta.persistence.schema-generation.scripts.create-target" value="META-INF/create.sql"/>-->
+
+            <property name="jakarta.persistence.sql-load-script-source" value="META-INF/create.sql"/>
 
 
         </properties>
