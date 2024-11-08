@@ -1,6 +1,7 @@
 package com.example.demo3;
 
 import com.example.demo3.entity.Product;
+import com.example.demo3.entity.Student;
 import com.example.demo3.utils.EntityManagerUtils;
 import com.example.demo3.utils.JpaUtil;
 import jakarta.persistence.EntityManager;
@@ -39,5 +40,9 @@ public class Main {
         System.out.println("Ok");
 
         //em.createNativeQuery("select * from products10", Product.class).getResultList().forEach(System.out::println);
+
+        em.createQuery("select s from Student s", Student.class).getResultList().forEach(System.out::println);
+
+        System.out.println(em.find(Student.class, 1001));
     }
 }
