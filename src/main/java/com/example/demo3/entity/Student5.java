@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="student5")
-public class Student {
+public class Student5 {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -21,17 +21,17 @@ public class Student {
     @Column(name="email")
     private String email;
 
-    public Student() {
+    public Student5() {
 
     }
 
-    public Student(String firstName, String lastName, String email) {
+    public Student5(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-    public Student(int id, String firstName, String lastName, String email) {
+    public Student5(int id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -72,7 +72,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+        return "Student5 [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
     }
 
 }

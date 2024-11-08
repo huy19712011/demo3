@@ -1,7 +1,7 @@
 package com.example.demo3.utils;
 
 import com.example.demo3.entity.Product;
-import com.example.demo3.entity.Student;
+import com.example.demo3.entity.Student5;
 import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -24,7 +24,7 @@ public class JpaUtil {
                 configuration.setProperties(settings);
 
                 // Here we need register entities to use!!!
-                configuration.addAnnotatedClass(Student.class);
+                configuration.addAnnotatedClass(Student5.class);
                 configuration.addAnnotatedClass(Product.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()

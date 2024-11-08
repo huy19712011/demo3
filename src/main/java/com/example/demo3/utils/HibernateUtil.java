@@ -1,10 +1,9 @@
 package com.example.demo3.utils;
 
-import com.example.demo3.entity.Student;
+import com.example.demo3.entity.Student5;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 import java.util.Properties;
@@ -22,7 +21,7 @@ public class HibernateUtil {
                 configuration.setProperties(settings);
 
                 // Register classes here to use
-                configuration.addAnnotatedClass(Student.class);
+                configuration.addAnnotatedClass(Student5.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

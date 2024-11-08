@@ -38,6 +38,6 @@ public class Main {
         list.forEach(System.out::println);
         System.out.println("Ok");
 
-        em.createNativeQuery("select * from products10", Product.class).getResultList().forEach(System.out::println);
+        //em.createNativeQuery("select * from products10", Product.class).getResultList().forEach(System.out::println);
     }
 }
