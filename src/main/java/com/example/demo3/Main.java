@@ -1,6 +1,8 @@
 package com.example.demo3;
 
+import com.example.demo3.entity.Course;
 import com.example.demo3.entity.Product;
+import com.example.demo3.entity.Review;
 import com.example.demo3.entity.Student;
 import com.example.demo3.utils.EntityManagerUtils;
 import com.example.demo3.utils.JpaUtil;
@@ -44,5 +46,24 @@ public class Main {
         em.createQuery("select s from Student s", Student.class).getResultList().forEach(System.out::println);
 
         System.out.println(em.find(Student.class, 1001));
+
+        Review review = new Review();
+        review.setRating("5");
+        review.setDescription("Ok");
+
+
+        Course course = new Course();
+        course.setName("java");
+        course.addReview(review);
+
+        review.setCourse(course);
+
+
+        em.getTransaction().begin();
+        em.persist(course); // also save review if orphanRemoval == persist or all
+        //em.persist(review);
+
+        //em.remove(course); // also remove associated reviews
+        em.getTransaction().commit();
     }
 }
