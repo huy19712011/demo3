@@ -1,17 +1,26 @@
 package com.example.demo3.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "students")
+//@Table(name = "students")
 public class Student {
     @Id
     private Long id;
     private String name;
     private String email;
     private String phone;
+
+    @ManyToMany
+    @JoinTable(
+            name = "STUDENT_COURSE",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> courses = new ArrayList<>();
 
     public Student() {
     }
@@ -53,6 +62,18 @@ public class Student {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void addCourse(Course course) {
+        this.courses.add(course);
+    }
+
+    public void removeCourse(Course course) {
+        this.courses.remove(course);
     }
 
     @Override
