@@ -3,12 +3,15 @@ package com.example.demo3.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "products")
+//@Table(name = "products")
 public class Product {
 
     @Id
     private long id;
     private String name;
+
+    @ManyToOne
+    Category category;
 
     public Product() {
     }
@@ -32,6 +35,14 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override
