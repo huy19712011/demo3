@@ -3,6 +3,11 @@ package com.example.demo3.entity;
 import jakarta.persistence.*;
 
 @Entity
+@NamedQuery(
+        name = "Product.getProductByNameOrId_6",
+        query = "SELECT p FROM Product p WHERE p.name = ?1 OR p.id = ?2"
+)
+
 //@Table(name = "products")
 public class Product {
 

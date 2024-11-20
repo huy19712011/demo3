@@ -1,10 +1,7 @@
 package com.example.demo3.repository;
 
 import com.example.demo3.entity.Product;
-import com.example.demo3.entity.Student;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,4 +42,60 @@ public class ProductRepository {
         em.persist(product);
         em.getTransaction().commit();
     }
+
+    //JPQL with index/named params
+    public List<Product> getProductByNameOrId_2(String name, long id) {
+
+        Query query =
+                em.createQuery("SELECT p FROM Product p WHERE p.name=?1 OR p.id=?2", Product.class);
+        query.setParameter(1, name);
+        query.setParameter(2, id);
+        List<Product> products = query.getResultList();
+        return products;
+    }
+
+    public List<Product> getProductByNameOrId_3(String name, long id) {
+
+        Query query =
+                em.createQuery("SELECT p FROM Product p WHERE p.name=:name OR p.id=:id", Product.class);
+        query.setParameter("name", name);
+        query.setParameter("id", id);
+        List<Product> products = query.getResultList();
+        return products;
+    }
+
+    // Native
+    public List<Product> getProductByNameOrId_4(String name, long id) {
+
+        Query query =
+                em.createNativeQuery("SELECT * FROM product p WHERE p.name=?1 OR p.id=?2", Product.class);
+        query.setParameter(1, name);
+        query.setParameter(2, id);
+        List<Product> products = query.getResultList();
+        return products;
+    }
+
+    // warning, but works!
+    public List<Product> getProductByNameOrId_5(String name, long id) {
+
+        Query query =
+                em.createNativeQuery("SELECT * FROM product p WHERE p.name=:name OR p.id=:id", Product.class);
+        query.setParameter("name", name);
+        query.setParameter("id", id);
+        List<Product> products = query.getResultList();
+        return products;
+    }
+
+
+    //
+
+    //public List<Product> getProductByNameOrId_6(String name, long id);
+    public List<Product> getProductByNameOrId_6(String name, long id) {
+        TypedQuery<Product> query = em.createNamedQuery("Product.getProductByNameOrId_6", Product.class);
+        query.setParameter(1, name);
+        query.setParameter(2, id);
+        return query.getResultList();
+    }
+
+
 }

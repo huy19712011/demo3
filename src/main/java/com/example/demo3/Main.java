@@ -1,18 +1,11 @@
 package com.example.demo3;
 
 import com.example.demo3.entity.Course;
-import com.example.demo3.entity.Product;
-import com.example.demo3.entity.Review;
 import com.example.demo3.entity.Student;
-import com.example.demo3.utils.EntityManagerUtils;
-import com.example.demo3.utils.JpaUtil;
+import com.example.demo3.repository.ProductRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
-import jakarta.transaction.Transactional;
-
-import java.util.List;
 
 public class Main {
 
@@ -86,6 +79,23 @@ public class Main {
 
         em.getTransaction().commit();
 
+
+        ProductRepository productRepository = new ProductRepository();
+
+        productRepository.getProductByNameOrId_2("product 1", 102)
+                .forEach(System.out::println);
+
+        productRepository.getProductByNameOrId_3("product 1", 102)
+                .forEach(System.out::println);
+
+        productRepository.getProductByNameOrId_4("product 1", 102)
+                .forEach(System.out::println);
+
+        productRepository.getProductByNameOrId_5("product 1", 102)
+                .forEach(System.out::println);
+
+        productRepository.getProductByNameOrId_6("product 2", 104)
+                .forEach(System.out::println);
 
     }
 }
