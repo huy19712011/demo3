@@ -46,7 +46,7 @@ public class ProductRepository {
     //JPQL with index/named params
     public List<Product> getProductByNameOrId_2(String name, long id) {
 
-        Query query =
+        TypedQuery<Product> query =
                 em.createQuery("SELECT p FROM Product p WHERE p.name=?1 OR p.id=?2", Product.class);
         query.setParameter(1, name);
         query.setParameter(2, id);
@@ -56,7 +56,7 @@ public class ProductRepository {
 
     public List<Product> getProductByNameOrId_3(String name, long id) {
 
-        Query query =
+        TypedQuery<Product> query =
                 em.createQuery("SELECT p FROM Product p WHERE p.name=:name OR p.id=:id", Product.class);
         query.setParameter("name", name);
         query.setParameter("id", id);
@@ -97,5 +97,10 @@ public class ProductRepository {
         return query.getResultList();
     }
 
+    public List<Product> findProductsByNameContaining(String name) {
+        TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p WHERE p.name LIKE :name", Product.class);
+        query.setParameter("name", "%" + name + "%");
+        return query.getResultList();
+    }
 
 }

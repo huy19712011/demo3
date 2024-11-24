@@ -97,5 +97,7 @@ public class Main {
         productRepository.getProductByNameOrId_6("product 2", 104)
                 .forEach(System.out::println);
 
+        productRepository.findProductsByNameContaining("pro")
+                .forEach(System.out::println);
     }
 }
