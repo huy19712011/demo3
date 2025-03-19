@@ -16,6 +16,11 @@
             <property name="jakarta.persistence.jdbc.user" value="sa"/>
             <property name="jakarta.persistence.jdbc.password" value="123456"/>
 
+            <!-- Hibernate-specific property to enable autocommit -->
+            <property name="hibernate.connection.autocommit" value="true"/>
+            <!-- enable JTA platform integration -->
+            <property name="hibernate.transaction.jta.platform" value="true"/>
+
             <!--            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>-->
             <property name="hibernate.show_sql" value="true"/>
 
