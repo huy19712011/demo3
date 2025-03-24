@@ -2,10 +2,13 @@ package com.example.demo3;
 
 import com.example.demo3.entity.Course;
 import com.example.demo3.entity.Student;
+import com.example.demo3.entity.Student5;
 import com.example.demo3.repository.ProductRepository;
+import com.example.demo3.utils.HibernateUtilVersion2;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import org.hibernate.Session;
 
 public class Main {
 
@@ -99,5 +102,15 @@ public class Main {
 
         productRepository.findProductsByNameContaining("pro")
                 .forEach(System.out::println);
+
+
+
+        Session session = HibernateUtilVersion2.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Student5 student5 = new Student5("firstName1", "lastName 1", "email 1");
+        session.persist(student5);
+
+        session.getTransaction().commit();
     }
 }
