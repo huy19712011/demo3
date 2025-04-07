@@ -16,6 +16,8 @@ public class FilterDemoServlet extends HttpServlet {
 
         String name = request.getParameter("name");
         out.println("Welcome " + name);
+
+        response.sendRedirect("/products");
     }
 
     @Override
