@@ -6,12 +6,37 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
+
+            $("#submit").click(function() {
+                console.log($("#product_id").val());
+                $.ajax({
+                    url: 'validateProduct',
+                    type: 'POST',
+                    data: {product_id: $("#product_id").val(), product_name: $("#product_name").val(), submit: "save"},
+                    success: function (responseText){
+
+                        console.log("test: ");
+                        console.log(responseText);
+
+                        $("#errMsg").text(responseText);
+
+                        if (responseText != null) {
+                            $("#product_id").focus();
+                        }
+                    },
+                    error: function () {
+                        console.log("Error...");
+                    }
+                });
+            });
+
+
             $("#product_id").change(function() {
                 console.log($("#product_id").val());
                 $.ajax({
                     url: 'validateProduct',
                     type: 'POST',
-                    data: {product_id: $("#product_id").val()},
+                    data: {product_id: $("#product_id").val(), product_name: $("#product_name").val()},
                     success: function (responseText){
                         console.log("Oki");
                         $("#errMsg").text(responseText);
@@ -29,6 +54,7 @@
 
         });
 
+
     </script>
 </head>
 <body>
@@ -45,9 +71,9 @@
     <form action="validateProduct">
         Product Id<input type="text" name="product_id" id="product_id"><span id="errMsg"></span>
         <br>
-        Product Name<input type="text" name="product_name">
+        Product Name<input type="text" name="product_name" id="product_name">
         <br>
-        <button type="submit">Submit</button>
+        <button type="submit" id="submit">Submit</button>
     </form>
 </h1>
 <br/>
