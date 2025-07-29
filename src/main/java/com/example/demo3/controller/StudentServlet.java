@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -20,7 +21,8 @@ import java.util.ArrayList;
         "/students/delete",
         "/students/edit",
         "/students/update",
-        "/students/saveStudent"
+        "/students/saveStudent",
+        "/students/showStudents"
 })
 public class StudentServlet extends HttpServlet {
 
@@ -53,8 +55,23 @@ public class StudentServlet extends HttpServlet {
             case "/students/saveStudent":
                 saveStudent(request, response);
                 break;
+            case "/students/showStudents":
+                showStudents(request, response);
+                break;
         }
 
+    }
+
+    private void showStudents(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        System.out.println("Show all students...");
+        ArrayList<Student> students = service.getStudents();
+        students.stream().forEach(student -> System.out.println(student));
+
+        JSONArray jsonArray = new org.json.JSONArray(students);
+        response.setContentType("application/json");
+
+        response.getWriter().write(jsonArray.toString()); // send this data to ajax call
     }
 
     private String saveStudent(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -70,7 +87,7 @@ public class StudentServlet extends HttpServlet {
         json.put("phone", student.getPhone());
 
         response.setContentType("application/json");
-        response.getWriter().write(json.toString());
+        response.getWriter().write(json.toString()); // send this data to ajax call
 
         return json.toString();
     }

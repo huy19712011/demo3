@@ -98,6 +98,7 @@
         </div>
         <div>
             <button type="button" onclick="saveStudent()">Add</button>
+            <button type="button" onclick="showStudents()">List of Students</button>
         </div>
     </form>
 </h1>
