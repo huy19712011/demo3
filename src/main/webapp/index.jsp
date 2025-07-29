@@ -56,6 +56,7 @@
 
 
     </script>
+    <script src="js/student.js"></script>
 </head>
 <body>
 <h1><%= "Hello World!" %>
@@ -74,6 +75,30 @@
         Product Name<input type="text" name="product_name" id="product_name">
         <br>
         <button type="submit" id="submit">Submit</button>
+    </form>
+    <hr>
+    <h3>Post new Student using Ajax</h3>
+    <form id="">
+        <div id="responseDiv"></div>
+        <div>
+            <label>Id</label>
+            <input type="text" id="student_id" name="student_id">
+        </div>
+        <div>
+            <label>Name</label>
+            <input type="text" id="student_name" name="student_name">
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" id="student_email" name="student_email">
+        </div>
+        <div>
+            <label>Phone</label>
+            <input type="text" id="student_phone" name="student_phone">
+        </div>
+        <div>
+            <button type="button" onclick="saveStudent()">Add</button>
+        </div>
     </form>
 </h1>
 <br/>

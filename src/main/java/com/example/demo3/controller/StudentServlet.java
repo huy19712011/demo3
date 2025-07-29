@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +19,8 @@ import java.util.ArrayList;
         "/students/insert",
         "/students/delete",
         "/students/edit",
-        "/students/update"
+        "/students/update",
+        "/students/saveStudent"
 })
 public class StudentServlet extends HttpServlet {
 
@@ -48,8 +50,29 @@ public class StudentServlet extends HttpServlet {
             case "/students/update":
                 updateStudent(request, response);
                 break;
+            case "/students/saveStudent":
+                saveStudent(request, response);
+                break;
         }
 
+    }
+
+    private String saveStudent(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        System.out.println("Adding ...");
+        Student student = getStudentFromForm(request);
+        service.addStudent(student);
+
+        JSONObject json = new JSONObject();
+        json.put("id", student.getId());
+        json.put("name", student.getName());
+        json.put("email", student.getEmail());
+        json.put("phone", student.getPhone());
+
+        response.setContentType("application/json");
+        response.getWriter().write(json.toString());
+
+        return json.toString();
     }
 
     @Override
