@@ -157,6 +157,14 @@ public class StudentServlet extends HttpServlet {
         // read student info from form
         Student student = getStudentFromForm(request);
 
+        if (student.getName() == null || student.getName().trim().isEmpty()) {
+            request.setAttribute("errorMessage", "Name is required.");
+            request.setAttribute("student", student);
+            request.getRequestDispatcher("/view/addStudentForm.jsp").forward(request, response);
+            return;
+        }
+
+
         // save student to list
         service.addStudent(student);
 
