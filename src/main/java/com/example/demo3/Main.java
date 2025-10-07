@@ -62,6 +62,28 @@ public class Main {
         ////em.remove(course); // also remove associated reviews
         //em.getTransaction().commit();
 
+        ProductRepository productRepository = new ProductRepository();
+
+        productRepository.getProductByNameOrId_2("product 1", 102)
+                .forEach(System.out::println);
+
+        productRepository.getProductByNameOrId_3("product 1", 102)
+                .forEach(System.out::println);
+
+        productRepository.getProductByNameOrId_4("product 1", 102)
+                .forEach(System.out::println);
+
+        productRepository.getProductByNameOrId_5("product 1", 102)
+                .forEach(System.out::println);
+
+        productRepository.getProductByNameOrId_6("product 2", 104)
+                .forEach(System.out::println);
+
+        productRepository.findProductsByNameContaining("pro")
+                .forEach(System.out::println);
+
+
+
 
         Student student = new Student();
         student.setId(1001L);
@@ -82,26 +104,6 @@ public class Main {
 
         em.getTransaction().commit();
 
-
-        ProductRepository productRepository = new ProductRepository();
-
-        productRepository.getProductByNameOrId_2("product 1", 102)
-                .forEach(System.out::println);
-
-        productRepository.getProductByNameOrId_3("product 1", 102)
-                .forEach(System.out::println);
-
-        productRepository.getProductByNameOrId_4("product 1", 102)
-                .forEach(System.out::println);
-
-        productRepository.getProductByNameOrId_5("product 1", 102)
-                .forEach(System.out::println);
-
-        productRepository.getProductByNameOrId_6("product 2", 104)
-                .forEach(System.out::println);
-
-        productRepository.findProductsByNameContaining("pro")
-                .forEach(System.out::println);
 
 
 
