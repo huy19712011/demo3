@@ -114,7 +114,7 @@ public class StudentServlet extends HttpServlet {
         service.updateStudent(student);
 
         // redirect to list students
-        response.sendRedirect("/students");
+        response.sendRedirect(request.getContextPath() + "/students");
     }
 
     private Student getStudentFromForm(HttpServletRequest request) {
@@ -149,7 +149,7 @@ public class StudentServlet extends HttpServlet {
 
         service.deleteStudent(id);
 
-        response.sendRedirect("/students");
+        response.sendRedirect(request.getContextPath() + "/students");
     }
 
     private void insertStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -169,7 +169,7 @@ public class StudentServlet extends HttpServlet {
         service.addStudent(student);
 
         // redirect to list students
-        response.sendRedirect("/students");
+        response.sendRedirect(request.getContextPath() + "/students");
         //listStudents(request, response);
     }
 

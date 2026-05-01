@@ -80,7 +80,7 @@ public class ProductServlet extends HttpServlet {
         service.updateProduct(product);
 
         // redirect to list products
-        response.sendRedirect("/products");
+        response.sendRedirect(request.getContextPath() + "/products");
     }
 
     private Product getProductFromForm(HttpServletRequest request) {
@@ -122,7 +122,7 @@ public class ProductServlet extends HttpServlet {
 
         service.deleteProduct(id);
 
-        response.sendRedirect("/products");
+        response.sendRedirect(request.getContextPath() + "/products");
     }
 
     private void insertProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -134,7 +134,7 @@ public class ProductServlet extends HttpServlet {
         service.addProduct(product);
 
         // redirect to list products
-        response.sendRedirect("/products");
+        response.sendRedirect(request.getContextPath() + "/products");
     }
 
     private void listProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
