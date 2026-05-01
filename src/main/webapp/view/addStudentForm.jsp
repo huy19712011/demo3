@@ -6,7 +6,7 @@
 </head>
 <body>
 <h3>Add Student</h3>
-<form action="/students/insert" method="post">
+<form action="${pageContext.request.contextPath}/students/insert" method="post">
     <c:if test="${not empty errorMessage}">
         <h4 class="error">${errorMessage}</h4>
     </c:if>

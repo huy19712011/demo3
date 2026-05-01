@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>Students</h2>
-<a href="/students/new">Add new Student</a>
+<a href="${pageContext.request.contextPath}/students/new">Add new Student</a>
 
 <table border="1">
     <tr>
@@ -27,8 +27,8 @@
             <td>${tempStudent.phone}</td>
 
             <td>
-                <a href="/students/edit?id=${tempStudent.id}">Edit</a>
-                <a href="/students/delete?id=${tempStudent.id}">Delete</a>
+                <a href="${pageContext.request.contextPath}/students/edit?id=${tempStudent.id}">Edit</a>
+                <a href="${pageContext.request.contextPath}/students/delete?id=${tempStudent.id}">Delete</a>
             </td>
         </tr>
     </c:forEach>

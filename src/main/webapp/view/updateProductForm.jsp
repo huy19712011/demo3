@@ -6,7 +6,7 @@
 </head>
 <body>
 <h3>Update Product</h3>
-<form action="/products/update" method="post">
+<form action="${pageContext.request.contextPath}/products/update" method="post">
     <table>
         <tr>
             <td><label>Id</label></td>

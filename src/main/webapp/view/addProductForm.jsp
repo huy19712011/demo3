@@ -7,7 +7,7 @@
 </head>
 <body>
 <h3>Add Product</h3>
-<form action="/products/insert" method="post">
+<form action="${pageContext.request.contextPath}/products/insert" method="post">
     <table>
         <tr>
             <td><label>Id</label></td>

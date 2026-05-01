@@ -12,7 +12,7 @@
 </head>
 <body>
 <h3>Update Student</h3>
-<form action="/students/update" method="post">
+<form action="${pageContext.request.contextPath}/students/update" method="post">
     <table>
         <tr>
             <td><label>Id</label></td>
