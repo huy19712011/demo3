@@ -17,6 +17,7 @@
 
 
         <th colspan="3">Actions</th>
+
     </tr>
     <c:forEach var="tempProduct" items="${products}" varStatus="i">
         <tr>
