@@ -6,10 +6,9 @@ import jakarta.persistence.Persistence;
 
 public class EntityManagerUtils {
 
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
+
     public static EntityManager getEntityManager() {
-
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
-
         return emf.createEntityManager();
     }
 }
